@@ -5,6 +5,7 @@ const MainStyled = styled.main`
   width: 100%;
   height: 100vh;
   color: var(--color-light);
+  overflow: hidden;
   /* height: 100vh; */
 
   .image-sky {
@@ -33,9 +34,45 @@ const MainStyled = styled.main`
     width: 100%;
     z-index: 10;
 
-    .weather-icon {
-      width: 100px;
-      height: 100px;
+    .weather {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-lg);
+      height: 100%;
+
+      &__degree {
+        display: flex;
+        align-items: center;
+        font-size: 7rem;
+
+        &__icon {
+          width: 64px;
+          height: 64px;
+        }
+
+        .degree {
+          font-size: 0.5em;
+          vertical-align: top;
+        }
+      }
+
+      &__situation {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        gap: var(--spacing-sm);
+
+        span {
+          color: var(--color-grey);
+        }
+      }
+
+      .vertical-line {
+        align-self: stretch;
+        width: 3px;
+        border-radius: 10px;
+        background-color: var(--color-light);
+      }
     }
   }
 `;

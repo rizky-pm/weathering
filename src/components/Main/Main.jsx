@@ -1,37 +1,56 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-
-import LocationInput from '../LocationInput/LocationInput';
+import moment from 'moment';
 
 import MainStyled from './Main.styled';
-import ClearSky from '../../assets/images/clear.jpg';
-import { getCurrentWeather } from '../../services';
+
+// import ClearSky from '../../assets/images/clear.jpg';
+import CloudySky from '../../assets/images/cloudy.jpg';
+
+import { getCurrentForecast } from '../../services';
+import { useGeoLocation } from '../../hooks/useGeoLocation';
 
 const Main = () => {
-  const [location, setLocation] = useState('');
+  const geoLocation = useGeoLocation();
 
-  const results = useQuery(['currentWeather', location], getCurrentWeather);
+  const results = useQuery(['currentWeather', geoLocation], getCurrentForecast);
   const currentWeather = results?.data;
 
   return (
     <MainStyled>
-      <img className='image-sky' src={ClearSky} alt='Clear sky' />
+      <img className='image-sky' src={CloudySky} alt='Clear sky' />
       <div className='overlay'></div>
       <div className='controller'>
         {results?.data && (
-          <>
-            <h1>{currentWeather?.data.location.name}</h1>
-            <img
-              className='weather-icon'
-              src={currentWeather?.data.current.condition.icon}
-              alt=''
-            />
-            <span>{currentWeather?.data.current.condition.text}</span>
-            <span>{currentWeather?.data.current.temp_c}&deg;C</span>
-          </>
-        )}
+          <div className='weather'>
+            <div className='weather__degree'>
+              {/* <img
+                className='weather__degree__icon'
+                src={currentWeather?.data.current.condition.icon}
+                alt=''
+              /> */}
+              <span>
+                {currentWeather?.data.current.temp_c}
+                <span className='degree'>&deg;C</span>
+              </span>
+            </div>
 
-        <LocationInput setLocation={setLocation} />
+            <div className='vertical-line'></div>
+
+            <div className='weather__situation'>
+              <h1>
+                {currentWeather?.data.location.name},{' '}
+                {currentWeather?.data.location.country}
+              </h1>
+              <span>
+                {moment(currentWeather?.data.current.last_updated).format(
+                  'dddd, h:mm'
+                )}
+              </span>
+              <span>{currentWeather?.data.current.condition.text}</span>
+            </div>
+          </div>
+        )}
       </div>
     </MainStyled>
   );
