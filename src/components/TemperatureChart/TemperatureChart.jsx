@@ -18,8 +18,6 @@ const TemperatureChart = ({ data }) => {
       temp_c: item.temp_c,
     }));
 
-  console.log(chartData);
-
   return (
     <ChartWrapper>
       {chartData && (

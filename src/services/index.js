@@ -18,8 +18,6 @@ export const getCurrentWeather = async ({ queryKey }) => {
     throw new Error(`Something went wrong with the API call.`);
   }
 
-  console.log(response);
-
   return response;
 };
 
@@ -42,8 +40,6 @@ export const getCurrentForecast = async ({ queryKey }) => {
   if (response.statusText !== 'OK') {
     throw new Error(`Something went wrong with the API call.`);
   }
-
-  console.log(response);
 
   return response;
 };
