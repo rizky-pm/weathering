@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import moment from 'moment';
 
+import TemperatureChart from '../TemperatureChart/TemperatureChart';
 import MainStyled from './Main.styled';
 
 // import ClearSky from '../../assets/images/clear.jpg';
@@ -15,6 +16,9 @@ const Main = () => {
 
   const results = useQuery(['currentWeather', geoLocation], getCurrentForecast);
   const currentWeather = results?.data;
+  const forecast = results?.data?.data?.forecast?.forecastday[0];
+
+  console.log(currentWeather);
 
   return (
     <MainStyled>
@@ -44,13 +48,15 @@ const Main = () => {
               </h1>
               <span>
                 {moment(currentWeather?.data.current.last_updated).format(
-                  'dddd, h:mm'
+                  'dddd, HH:mm'
                 )}
               </span>
               <span>{currentWeather?.data.current.condition.text}</span>
             </div>
           </div>
         )}
+
+        <TemperatureChart data={forecast} />
       </div>
     </MainStyled>
   );
