@@ -12,7 +12,6 @@ const Detail = ({ data }) => {
   return (
     <DetailStyled sunPosition={diffAstro}>
       <div className='detail'>
-        {/* <h1>More Detail</h1> */}
         <div className='detail__sun'>
           <div className='detail__sun--rise'>
             <p>Sunrise</p>

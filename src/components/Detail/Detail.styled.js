@@ -16,18 +16,18 @@ const DetailStyled = styled.div`
   .detail {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-g);
     /* background-color: rgba(235, 245, 238, 0.25); */
 
     &__sun {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
       align-items: center;
 
       &--line {
         position: relative;
         width: 80%;
-        height: 5px;
+        height: 3px;
         background-color: var(--color-light);
         border: none;
 
@@ -37,13 +37,16 @@ const DetailStyled = styled.div`
           top: 50%;
           left: ${(props) => props.sunPosition}%;
           transform: translate(0%, -50%);
-          width: 50px;
-          height: 50px;
+          width: 40px;
+          height: 40px;
         }
       }
 
-      &__rise {
-        color: red;
+      &--rise,
+      &--set {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
       }
     }
   }
