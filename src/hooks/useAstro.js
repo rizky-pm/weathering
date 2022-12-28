@@ -7,6 +7,8 @@ const useAstro = (astroDate, astroDetail) => {
     sunrise: '',
     sunset: '',
   });
+  const [count, setCount] = useState(0);
+  const [diff, setDiff] = useState(0);
 
   const setAstroHandler = async (date, sunrise, sunset) => {
     const sunriseTime = moment(`${date} ${sunrise}`).format('YYYY-MM-DD HH:mm');
@@ -32,15 +34,19 @@ const useAstro = (astroDate, astroDetail) => {
   };
 
   useEffect(() => {
+    const timer = setTimeout(() => setCount(count + 1), 1e3);
+
     if (astroDate)
       setAstroHandler(astroDate, astroDetail?.sunrise, astroDetail?.sunset);
-  }, [astroDate]);
+    setDiff(
+      100 -
+        ((astro.sunset - astro.current) / (astro.sunset - astro.sunrise)) * 100
+    );
 
-  const diff =
-    100 -
-    ((astro.sunset - astro.current) / (astro.sunset - astro.sunrise)) * 100;
+    return () => clearTimeout(timer);
+  }, [count, astroDate]);
 
-  return Math.round(diff);
+  return diff.toFixed(1);
 };
 
 export default useAstro;
