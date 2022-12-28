@@ -1,5 +1,4 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
 import moment from 'moment';
 
 import TemperatureChart from '../TemperatureChart/TemperatureChart';
@@ -9,8 +8,6 @@ import MainStyled from './Main.styled';
 import CloudySky from '../../assets/images/cloudy.jpg';
 
 const Main = ({ data }) => {
-  console.log(data);
-
   return (
     <MainStyled>
       <img className='image-sky' src={CloudySky} alt='Clear sky' />
