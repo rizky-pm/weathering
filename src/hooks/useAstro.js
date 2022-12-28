@@ -1,20 +1,26 @@
+import moment from 'moment';
 import { useState, useEffect } from 'react';
 
-const useAstro = (currentDate) => {
+const useAstro = (weatherData) => {
   const [astro, setAstro] = useState({
     current: '',
     sunrise: '',
     sunset: '',
   });
 
-  const setAstroHandler = async (date) => {
-    const current = new Date();
-    const sunrise = new Date(`${date} 05:39 GMT+7`);
-    const sunset = new Date(`${date} 17:39 GMT+7`);
+  console.log(weatherData);
 
-    const currentIso = current.toISOString();
-    const sunriseIso = sunrise.toISOString();
-    const sunsetIso = sunset.toISOString();
+  const setAstroHandler = async (date, sunrise, sunset) => {
+    const sunriseTime = moment(`${date} ${sunrise}`).format('YYYY-MM-DD HH:mm');
+    const sunsetTime = moment(`${date} ${sunset}`).format('YYYY-MM-DD HH:mm');
+
+    const currentUTC = new Date();
+    const sunriseUTC = new Date(sunriseTime + ' GMT+7');
+    const sunsetUTC = new Date(sunsetTime + ' GMT+7');
+
+    const currentIso = currentUTC.toISOString();
+    const sunriseIso = sunriseUTC.toISOString();
+    const sunsetIso = sunsetUTC.toISOString();
 
     const currentEpoch = Date.parse(currentIso);
     const sunriseEpoch = Date.parse(sunriseIso);
@@ -28,8 +34,13 @@ const useAstro = (currentDate) => {
   };
 
   useEffect(() => {
-    if (currentDate) setAstroHandler(currentDate);
-  }, [currentDate]);
+    if (weatherData)
+      setAstroHandler(
+        weatherData.date,
+        weatherData.astro?.sunrise,
+        weatherData.astro?.sunset
+      );
+  }, [weatherData]);
 
   const diff =
     100 -

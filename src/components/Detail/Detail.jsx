@@ -5,7 +5,7 @@ import DetailStyled from './Detail.styled';
 import SunIcon from '../../assets/icons/sun.png';
 
 const Detail = ({ data }) => {
-  const diffAstro = useAstro(data?.date);
+  const diffAstro = useAstro(data);
 
   console.log(data ?? 'No data');
 
