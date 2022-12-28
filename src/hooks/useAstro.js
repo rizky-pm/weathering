@@ -34,7 +34,7 @@ const useAstro = (astroDate, astroDetail) => {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => setCount(count + 1), 1e3);
+    const timer = setTimeout(() => setCount(count + 1), 60000);
 
     if (astroDate)
       setAstroHandler(astroDate, astroDetail?.sunrise, astroDetail?.sunset);
