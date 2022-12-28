@@ -10,13 +10,17 @@ const DetailStyled = styled.div`
   );
   color: var(--color-light);
   padding: var(--spacing-xl) 128px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
   text-align: center;
   overflow: hidden;
 
   .detail {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-g);
+    gap: var(--spacing-xl);
     /* background-color: rgba(235, 245, 238, 0.25); */
 
     &__sun {
@@ -47,6 +51,30 @@ const DetailStyled = styled.div`
         display: flex;
         flex-direction: column;
         gap: var(--spacing-sm);
+      }
+    }
+
+    &__info {
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: var(--spacing-xl);
+      justify-content: space-between;
+      background-color: rgba(34, 34, 34, 0.25);
+      padding: var(--spacing-xl);
+      border-radius: 5px;
+
+      &__card {
+        display: flex;
+        flex-basis: 25%;
+        flex-direction: column;
+        gap: var(--spacing-md);
+
+        p {
+          &:nth-of-type(1) {
+            color: var(--color-light);
+            font-weight: 600;
+          }
+        }
       }
     }
   }
