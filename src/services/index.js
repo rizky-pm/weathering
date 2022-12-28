@@ -32,7 +32,7 @@ export const getCurrentForecast = async ({ queryKey }) => {
     params: {
       q: location,
       days: 1,
-      aqi: 'no',
+      aqi: 'yes',
       alerts: 'no',
     },
   });
