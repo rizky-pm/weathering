@@ -19,7 +19,10 @@ function App() {
     // <Provider store={store}>
     <>
       <Main data={currentWeather?.data} />
-      <Detail data={currentWeather?.data?.forecast.forecastday[0]} />
+      <Detail
+        astroData={currentWeather?.data?.forecast.forecastday[0]}
+        data={currentWeather?.data}
+      />
     </>
     // </Provider>
   );

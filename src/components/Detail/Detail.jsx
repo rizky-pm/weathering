@@ -4,8 +4,8 @@ import DetailStyled from './Detail.styled';
 
 import SunIcon from '../../assets/icons/sun.png';
 
-const Detail = ({ data }) => {
-  const diffAstro = useAstro(data);
+const Detail = ({ astroData, data }) => {
+  const diffAstro = useAstro(astroData?.date, astroData?.astro);
 
   console.log(data ?? 'No data');
 
@@ -15,48 +15,43 @@ const Detail = ({ data }) => {
         <div className='detail__sun'>
           <div className='detail__sun--rise'>
             <p>Sunrise</p>
-            <p>{data?.astro.sunrise}</p>
+            <p>{astroData?.astro.sunrise}</p>
           </div>
           <div className='detail__sun--line'>
             <img className='icon-sun' src={SunIcon} alt='Sun' />
           </div>
           <div className='detail__sun--set'>
             <p>Sunset</p>
-            <p>{data?.astro.sunset}</p>
+            <p>{astroData?.astro.sunset}</p>
           </div>
         </div>
         <div className='detail__info'>
           <div className='detail__info__card'>
-            <p>Average Humidity</p>
-            <p>{data?.day?.avghumidity}%</p>
+            <p>Humidity</p>
+            <p>{data?.current?.humidity}%</p>
           </div>
           <div className='detail__info__card'>
-            <p>Min Temp</p>
-            <p>{data?.day?.mintemp_c}&deg;C</p>
-          </div>
-          <div className='detail__info__card'>
-            <p>Average Temp</p>
-            <p>{data?.day?.avgtemp_c}&deg;C</p>
-          </div>
-          <div className='detail__info__card'>
-            <p>Max Temp</p>
-            <p>{data?.day?.maxtemp_c}&deg;C</p>
-          </div>
-          <div className='detail__info__card'>
-            <p>Chance of Rain</p>
-            <p>{data?.day?.daily_chance_of_rain}C</p>
+            <p>Feels Like</p>
+            <p>{data?.current?.feelslike_c}&deg;C</p>
           </div>
           <div className='detail__info__card'>
             <p>UV Index</p>
-            <p>{data?.day?.uv}</p>
+            <p>{data?.current?.uv}</p>
           </div>
           <div className='detail__info__card'>
-            <p>Average Visibility</p>
-            <p>{data?.day?.avgvis_km} Km</p>
+            <p>Visibility</p>
+            <p>{data?.current?.vis_km} km</p>
           </div>
           <div className='detail__info__card'>
             <p>Wind Speed</p>
-            <p> &lt; {data?.day?.maxwind_kph} Km/H</p>
+            <p>{data?.current?.wind_kph} km/h</p>
+          </div>
+          <div className='detail__info__card'>
+            <p>Wind Direction</p>
+            <p>
+              {data?.current?.wind_degree}
+              &deg; - {data?.current?.wind_dir}
+            </p>
           </div>
         </div>
       </div>

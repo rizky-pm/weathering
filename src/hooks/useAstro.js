@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { useState, useEffect } from 'react';
 
-const useAstro = (weatherData) => {
+const useAstro = (astroDate, astroDetail) => {
   const [astro, setAstro] = useState({
     current: '',
     sunrise: '',
@@ -32,13 +32,9 @@ const useAstro = (weatherData) => {
   };
 
   useEffect(() => {
-    if (weatherData)
-      setAstroHandler(
-        weatherData.date,
-        weatherData.astro?.sunrise,
-        weatherData.astro?.sunset
-      );
-  }, [weatherData]);
+    if (astroDate)
+      setAstroHandler(astroDate, astroDetail?.sunrise, astroDetail?.sunset);
+  }, [astroDate]);
 
   const diff =
     100 -
