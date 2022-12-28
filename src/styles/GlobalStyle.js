@@ -17,6 +17,8 @@ const GlobalStyle = createGlobalStyle`
 
     body {
 	    line-height: 1;
+        background: linear-gradient(180deg,rgba(82, 98, 132, 1) 0%,rgba(166, 168, 177, 1) 100%);
+  background-attachment: fixed;
     }
 
     ol, ul {
