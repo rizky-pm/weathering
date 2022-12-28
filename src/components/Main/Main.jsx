@@ -8,33 +8,38 @@ import MainStyled from './Main.styled';
 import CloudySky from '../../assets/images/cloudy.jpg';
 
 const Main = ({ data }) => {
+  console.log(data);
   return (
     <MainStyled>
       <img className='image-sky' src={CloudySky} alt='Clear sky' />
       <div className='overlay'></div>
       <div className='controller'>
-        {data && (
-          <div className='weather'>
-            <div className='weather__degree'>
-              <span>
-                {data?.current?.temp_c}
-                <span className='degree'>&deg;C</span>
-              </span>
+        {data ? (
+          <>
+            <div className='weather'>
+              <div className='weather__degree'>
+                <span>
+                  {data?.current?.temp_c}
+                  <span className='degree'>&deg;C</span>
+                </span>
+              </div>
+
+              <div className='vertical-line'></div>
+
+              <div className='weather__situation'>
+                <h1>
+                  {data?.location?.name}, {data?.location?.country}
+                </h1>
+                <span>{moment(data?.last_updated).format('dddd, HH:mm')}</span>
+                <span>{data?.current?.condition?.text}</span>
+              </div>
             </div>
 
-            <div className='vertical-line'></div>
-
-            <div className='weather__situation'>
-              <h1>
-                {data?.location?.name}, {data?.location?.country}
-              </h1>
-              <span>{moment(data?.last_updated).format('dddd, HH:mm')}</span>
-              <span>{data?.current?.condition?.text}</span>
-            </div>
-          </div>
+            <TemperatureChart data={data?.forecast.forecastday[0]} />
+          </>
+        ) : (
+          <h1>Loading Data ...</h1>
         )}
-
-        <TemperatureChart data={data?.forecast.forecastday[0]} />
       </div>
     </MainStyled>
   );
