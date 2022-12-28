@@ -1,4 +1,5 @@
 import useAstro from '../../hooks/useAstro';
+import airQualityLabelRenderer from '../../utils/aqIndexHelper';
 
 import DetailStyled from './Detail.styled';
 
@@ -39,8 +40,13 @@ const Detail = ({ astroData, data }) => {
             <p>{data?.current?.uv}</p>
           </div>
           <div className='detail__info__card'>
-            <p>Visibility</p>
-            <p>{data?.current?.vis_km} km</p>
+            <p>Air Quality</p>
+            <p>
+              {data?.current?.air_quality['us-epa-index']} -{' '}
+              {airQualityLabelRenderer(
+                data?.current?.air_quality['us-epa-index']
+              )}
+            </p>
           </div>
           <div className='detail__info__card'>
             <p>Wind Speed</p>
