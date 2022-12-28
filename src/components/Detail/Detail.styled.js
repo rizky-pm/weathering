@@ -13,14 +13,6 @@ const DetailStyled = styled.div`
   text-align: center;
   overflow: hidden;
 
-  hr {
-    width: 80%;
-    height: 3px;
-    background-color: var(--color-light);
-    border: none;
-    /* border: 1px solid var(--color-light); */
-  }
-
   .detail {
     display: flex;
     flex-direction: column;
@@ -31,6 +23,24 @@ const DetailStyled = styled.div`
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      &--line {
+        position: relative;
+        width: 80%;
+        height: 5px;
+        background-color: var(--color-light);
+        border: none;
+
+        .icon-sun {
+          object-fit: cover;
+          position: absolute;
+          top: 50%;
+          left: -1%;
+          transform: translate(0%, -50%);
+          width: 50px;
+          height: 50px;
+        }
+      }
 
       &__rise {
         color: red;
