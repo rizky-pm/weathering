@@ -8,8 +8,6 @@ const useAstro = (weatherData) => {
     sunset: '',
   });
 
-  console.log(weatherData);
-
   const setAstroHandler = async (date, sunrise, sunset) => {
     const sunriseTime = moment(`${date} ${sunrise}`).format('YYYY-MM-DD HH:mm');
     const sunsetTime = moment(`${date} ${sunset}`).format('YYYY-MM-DD HH:mm');
