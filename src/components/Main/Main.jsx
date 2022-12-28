@@ -9,6 +9,8 @@ import MainStyled from './Main.styled';
 import CloudySky from '../../assets/images/cloudy.jpg';
 
 const Main = ({ data }) => {
+  console.log(data);
+
   return (
     <MainStyled>
       <img className='image-sky' src={CloudySky} alt='Clear sky' />
@@ -30,7 +32,7 @@ const Main = ({ data }) => {
                 {data?.location?.name}, {data?.location?.country}
               </h1>
               <span>{moment(data?.last_updated).format('dddd, HH:mm')}</span>
-              <span>{data?.condition?.text}</span>
+              <span>{data?.current?.condition?.text}</span>
             </div>
           </div>
         )}
