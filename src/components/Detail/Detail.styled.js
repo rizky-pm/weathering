@@ -60,12 +60,13 @@ const DetailStyled = styled.div`
       row-gap: var(--spacing-xl);
       justify-content: space-between;
       background-color: rgba(34, 34, 34, 0.25);
-      padding: var(--spacing-xl);
+      padding: var(--spacing-xl) 0;
       border-radius: 5px;
 
       &__card {
         display: flex;
-        flex-basis: 25%;
+        align-items: center;
+        flex-basis: calc(100% / 3);
         flex-direction: column;
         gap: var(--spacing-md);
 
