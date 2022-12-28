@@ -35,7 +35,7 @@ const DetailStyled = styled.div`
           object-fit: cover;
           position: absolute;
           top: 50%;
-          left: -1%;
+          left: ${(props) => props.sunPosition}%;
           transform: translate(0%, -50%);
           width: 50px;
           height: 50px;

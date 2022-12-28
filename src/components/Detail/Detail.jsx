@@ -1,25 +1,29 @@
+import useAstro from '../../hooks/useAstro';
+
 import DetailStyled from './Detail.styled';
 
 import SunIcon from '../../assets/icons/sun.png';
 
 const Detail = ({ data }) => {
-  console.log(data);
+  const diffAstro = useAstro(data?.date);
+
+  console.log(data ?? 'No data');
 
   return (
-    <DetailStyled>
+    <DetailStyled sunPosition={diffAstro}>
       <div className='detail'>
         {/* <h1>More Detail</h1> */}
         <div className='detail__sun'>
           <div className='detail__sun--rise'>
             <p>Sunrise</p>
-            <p>06:00</p>
+            <p>{data?.astro.sunrise}</p>
           </div>
           <div className='detail__sun--line'>
             <img className='icon-sun' src={SunIcon} alt='Sun' />
           </div>
           <div className='detail__sun--set'>
             <p>Sunset</p>
-            <p>18:00</p>
+            <p>{data?.astro.sunset}</p>
           </div>
         </div>
       </div>
