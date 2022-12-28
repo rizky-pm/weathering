@@ -12,7 +12,7 @@ import ChartWrapper from './TemperatureChart.styled';
 
 const TemperatureChart = ({ data }) => {
   const chartData = data?.hour
-    .filter((_, index) => index % 3 === 0)
+    .filter((_, index) => index % 2 === 0)
     .map((item) => ({
       hour: moment(item.time).format('H:mm'),
       temp_c: item.temp_c,
