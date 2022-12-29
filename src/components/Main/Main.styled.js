@@ -43,7 +43,7 @@ const MainStyled = styled.main`
       &__degree {
         display: flex;
         align-items: center;
-        font-size: 7rem;
+        font-size: 5rem;
 
         &__icon {
           width: 64px;
