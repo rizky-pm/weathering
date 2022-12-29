@@ -10,6 +10,10 @@ const useAstro = (astroDate, astroDetail) => {
   const [loaded, setLoaded] = useState(false);
 
   const setAstroHandler = async (date, sunrise, sunset) => {
+    // remove am or pm
+    // sunrise = sunrise.replace(/(AM|PM)/, '');
+    // sunset = sunset.replace(/(AM|PM)/, '');
+
     const sunriseTime = moment(`${date} ${sunrise}`).format('YYYY-MM-DD HH:mm');
     const sunsetTime = moment(`${date} ${sunset}`).format('YYYY-MM-DD HH:mm');
 
