@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/weathering/static/js/main.6f5c9f1e.js",
+    "static/js/787.e22c794d.chunk.js": "/weathering/static/js/787.e22c794d.chunk.js",
+    "index.html": "/weathering/index.html",
+    "main.6f5c9f1e.js.map": "/weathering/static/js/main.6f5c9f1e.js.map",
+    "787.e22c794d.chunk.js.map": "/weathering/static/js/787.e22c794d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.6f5c9f1e.js"
+  ]
+}
