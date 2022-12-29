@@ -4,7 +4,7 @@ import moment from 'moment';
 import TemperatureChart from '../TemperatureChart/TemperatureChart';
 import MainStyled from './Main.styled';
 
-const Main = ({ data }) => {
+const Main = ({ data, iconUrl }) => {
   console.log(data);
   return (
     <MainStyled>
@@ -14,6 +14,7 @@ const Main = ({ data }) => {
           <>
             <div className='weather'>
               <div className='weather__degree'>
+                <img src={iconUrl} alt='Current weather icon' />
                 <span>
                   {data?.current?.temp_c}
                   <span className='degree'>&deg;C</span>

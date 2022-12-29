@@ -12,13 +12,19 @@ function App() {
   const geoLocation = useGeoLocation();
 
   const results = useQuery(['currentWeather', geoLocation], getCurrentForecast);
+
   const currentWeather = results?.data;
-  // const forecast = results?.data?.data?.forecast?.forecastday[0];
+
+  // replace 64x64 with 128x128
+  const iconUrl = currentWeather?.data?.current?.condition?.icon.replace(
+    '64x64',
+    '128x128'
+  );
 
   return (
     // <Provider store={store}>
     <>
-      <Main data={currentWeather?.data} />
+      <Main data={currentWeather?.data} iconUrl={iconUrl} />
       <Detail
         astroData={currentWeather?.data?.forecast.forecastday[0]}
         data={currentWeather?.data}
