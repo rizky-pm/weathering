@@ -12,7 +12,7 @@ const Main = ({ data, iconUrl }) => {
       <div className='controller'>
         <div className='weather'>
           <div className='weather__degree'>
-            <img src={iconUrl} alt='' />
+            <img className='weather__degree__icon' src={iconUrl} alt='' />
             <span>
               {data?.current?.temp_c}
               <span className='degree'>&deg;C</span>

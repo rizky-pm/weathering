@@ -40,6 +40,10 @@ const MainStyled = styled.main`
       gap: var(--spacing-lg);
       height: 100%;
 
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+
       &__degree {
         display: flex;
         align-items: center;
@@ -56,6 +60,24 @@ const MainStyled = styled.main`
         }
       }
 
+      @media (max-width: 768px) {
+        &__degree {
+          display: flex;
+          flex-direction: column;
+          font-size: 7rem;
+
+          &__icon {
+            width: 164px;
+            height: 164px;
+          }
+
+          .degree {
+            font-size: 0.25em;
+            vertical-align: top;
+          }
+        }
+      }
+
       &__situation {
         display: flex;
         flex-direction: column;
@@ -64,6 +86,16 @@ const MainStyled = styled.main`
 
         span {
           color: var(--color-grey);
+        }
+      }
+
+      @media (max-width: 768px) {
+        &__situation {
+          text-align: center;
+
+          span {
+            font-size: 1.05rem;
+          }
         }
       }
 

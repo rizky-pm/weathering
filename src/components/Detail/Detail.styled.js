@@ -72,6 +72,26 @@ const DetailStyled = styled.div`
       }
     }
   }
+
+  @media (max-width: 768px) {
+    height: auto;
+    justify-content: flex-start;
+    padding: var(--spacing-xl) var(--spacing-lg);
+
+    .detail {
+      &__info {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        row-gap: 0;
+        gap: var(--spacing-xl);
+
+        &__card {
+          flex-basis: 100%;
+          gap: 0;
+        }
+      }
+    }
+  }
 `;
 
 export default DetailStyled;

@@ -11,6 +11,13 @@ const ChartWrapper = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
+
+    span {
+      display: block;
+      text-align: center;
+      font-size: 0.9em;
+      color: var(--color-grey);
+    }
   }
 `;
 
