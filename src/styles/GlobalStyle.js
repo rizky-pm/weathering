@@ -38,6 +38,16 @@ const GlobalStyle = createGlobalStyle`
         border-collapse: collapse;
         border-spacing: 0;
     }
+
+    .loading-container {
+        width: 100vw ;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--color-light);
+        overflow: hidden;
+    }
 `;
 
 export default GlobalStyle;

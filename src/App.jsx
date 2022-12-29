@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import { Provider } from 'react-redux';
 import Detail from './components/Detail/Detail';
 
 import Main from './components/Main/Main';
@@ -21,16 +20,23 @@ function App() {
     '128x128'
   );
 
+  if (results.isLoading)
+    return (
+      <div className='loading-container'>
+        <h1>Loading Data ...</h1>
+      </div>
+    );
+
   return (
-    // <Provider store={store}>
-    <>
-      <Main data={currentWeather?.data} iconUrl={iconUrl} />
-      <Detail
-        astroData={currentWeather?.data?.forecast.forecastday[0]}
-        data={currentWeather?.data}
-      />
-    </>
-    // </Provider>
+    currentWeather && (
+      <>
+        <Main data={currentWeather.data} iconUrl={iconUrl} />
+        <Detail
+          astroData={currentWeather.data.forecast.forecastday[0]}
+          data={currentWeather.data}
+        />
+      </>
+    )
   );
 }
 
